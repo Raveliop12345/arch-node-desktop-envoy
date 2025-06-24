@@ -13,6 +13,7 @@ import {
   Grid,
   List
 } from 'lucide-react';
+import FilesIcon from '../free icon/Files.svg?react';
 
 interface FileManagerProps {
   isActive: boolean;
@@ -129,7 +130,7 @@ export const FileManager: React.FC<FileManagerProps> = ({ isActive, onClose, onF
                   {file.type === 'folder' ? (
                     <Folder className="w-5 h-5 text-blue-400 mr-3" />
                   ) : (
-                    <File className="w-5 h-5 text-slate-400 mr-3" />
+                    <FilesIcon className="w-5 h-5 text-slate-400 mr-3" />
                   )}
                   <div className="flex-1">
                     <div className="text-white">{file.name}</div>
@@ -153,7 +154,7 @@ export const FileManager: React.FC<FileManagerProps> = ({ isActive, onClose, onF
                   {file.type === 'folder' ? (
                     <Folder className="w-12 h-12 text-blue-400 mb-2" />
                   ) : (
-                    <File className="w-12 h-12 text-slate-400 mb-2" />
+                    <FilesIcon className="w-12 h-12 text-slate-400 mb-2" />
                   )}
                   <div className="text-white text-sm text-center truncate w-full">
                     {file.name}

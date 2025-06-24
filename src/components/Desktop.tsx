@@ -6,6 +6,7 @@ import { Terminal } from './Terminal';
 import { SystemMonitor } from './SystemMonitor';
 import { ProcessManager } from './ProcessManager';
 import { Store } from './Store';
+import { Chatbot } from './Chatbot';
 import { NotificationCenter } from './NotificationCenter';
 import { DesktopIcon } from './DesktopIcon';
 import { 
@@ -23,6 +24,7 @@ import StoreIcon from '../free icon/store.png';
 export const Desktop = () => {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
   const [activeWindow, setActiveWindow] = useState<string | null>(null);
+  const [isChatbotOpen, setChatbotOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -42,6 +44,10 @@ export const Desktop = () => {
     if (activeWindow === windowId) {
       setActiveWindow(openWindows[openWindows.length - 2] || null);
     }
+  };
+
+  const toggleChatbot = () => {
+    setChatbotOpen(!isChatbotOpen);
   };
 
   const desktopIcons = [
@@ -141,9 +147,14 @@ export const Desktop = () => {
         activeWindow={activeWindow}
         onWindowClick={setActiveWindow}
         onOpenWindow={openWindow}
+        onToggleChatbot={toggleChatbot}
+        isChatbotOpen={isChatbotOpen}
       />
 
       {/* Notification Center */}
+      {/* AI Chatbot Window */}
+      {isChatbotOpen && <Chatbot onClose={toggleChatbot} />}
+
       <NotificationCenter />
     </div>
   );

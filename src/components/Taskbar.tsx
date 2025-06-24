@@ -29,7 +29,8 @@ import {
   Chrome,
   Mail,
   Clock,
-  Gamepad2
+  Gamepad2,
+  Bot
 } from 'lucide-react';
 
 interface TaskbarProps {
@@ -37,6 +38,8 @@ interface TaskbarProps {
   activeWindow: string | null;
   onWindowClick: (windowId: string) => void;
   onOpenWindow: (windowId: string) => void;
+  onToggleChatbot: () => void;
+  isChatbotOpen: boolean;
 }
 
 interface SystemStatus {
@@ -51,7 +54,9 @@ export const Taskbar: React.FC<TaskbarProps> = ({
   openWindows,
   activeWindow,
   onWindowClick,
-  onOpenWindow
+  onOpenWindow,
+  onToggleChatbot,
+  isChatbotOpen
 }) => {
   const [showStartMenu, setShowStartMenu] = useState(false);
   const [showSystemMenu, setShowSystemMenu] = useState(false);
@@ -270,6 +275,14 @@ export const Taskbar: React.FC<TaskbarProps> = ({
 
         {/* System Tray */}
         <div className="flex items-center space-x-1">
+          {/* AI Assistant */}
+          <button 
+            onClick={onToggleChatbot}
+            className={`p-2 rounded-md transition-colors duration-200 ${isChatbotOpen ? 'bg-cyan-500/50 text-cyan-300' : 'hover:bg-slate-700/50'}`}
+            aria-label="Toggle AI Assistant"
+          >
+            <Bot className="w-5 h-5" />
+          </button>
           {/* Wifi Status */}
           <button
             className={`p-2 hover:bg-slate-700/50 rounded-lg transition-colors ${

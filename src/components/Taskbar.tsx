@@ -461,7 +461,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
           height: 16px;

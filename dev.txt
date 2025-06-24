@@ -1,0 +1,72 @@
+Journal de Développement - Projet Desktop Envoy
+
+Ce fichier détaille toutes les modifications apportées au projet.
+
+---
+
+### 1. Personnalisation des Icônes
+
+**Objectif :** Remplacer les icônes par défaut par des images personnalisées fournies par l'utilisateur.
+
+**Fichiers modifiés :**
+- `src/components/Desktop.tsx`
+- `src/components/DesktopIcon.tsx`
+
+**Détails des ajouts et modifications :**
+
+1.  **Remplacement de l'icône du Terminal (Minecraft) :**
+    *   **Modification :** L'icône du Terminal, initialement une icône de la bibliothèque `lucide-react`, a été remplacée par un fichier SVG personnalisé (`minecart-command-block.svg`).
+    *   **Utilité :** Première étape de la personnalisation des icônes selon la demande de l'utilisateur.
+
+2.  **Remplacement des icônes du bureau (dossier `free icon`) :**
+    *   **Modification :** Les icônes pour "Files", "Terminal", "System Monitor" et "Settings" ont été remplacées par les images correspondantes trouvées dans le dossier `src/free icon`.
+    *   **Utilité :** Répondre à la demande de l'utilisateur d'utiliser son propre jeu d'icônes.
+
+3.  **Mise à jour du composant `DesktopIcon.tsx` :**
+    *   **Modification :** Le composant a été rendu plus flexible pour accepter différents types d'images (fichiers SVG importés comme composants React et fichiers PNG/JPG importés comme des chaînes de caractères).
+    *   **Utilité :** Cette modification était techniquement nécessaire pour permettre l'affichage des nouvelles icônes qui étaient dans des formats différents.
+
+---
+
+### 2. Amélioration du Style des Icônes
+
+**Objectif :** Améliorer l'apparence visuelle des icônes sur le bureau.
+
+**Fichier modifié :**
+- `src/components/DesktopIcon.tsx`
+
+**Détails des ajouts et modifications :**
+
+1.  **Suppression du fond des icônes :**
+    *   **Modification :** Le fond gris semi-transparent derrière chaque icône a été supprimé.
+    *   **Utilité :** Rendre l'apparence plus épurée, comme demandé.
+
+2.  **Augmentation de la taille des icônes :**
+    *   **Modification :** La taille des icônes a été augmentée de `w-8 h-8` à `w-12 h-12`.
+    *   **Utilité :** Améliorer la visibilité et l'impact visuel des icônes sur le bureau.
+
+---
+
+### 3. Corrections Techniques et Amélioration du Code
+
+**Objectif :** Résoudre les erreurs techniques, améliorer la qualité du code et assurer la stabilité du projet.
+
+**Fichiers modifiés :**
+- `tsconfig.app.json`
+- `tailwind.config.ts`
+- `src/components/ui/command.tsx`
+- `src/components/ui/textarea.tsx`
+
+**Détails des ajouts et modifications :**
+
+1.  **Configuration de TypeScript pour Vite :**
+    *   **Modification :** Ajout de `"types": ["vite/client"]` au fichier `tsconfig.app.json`.
+    *   **Utilité :** Correction d'erreurs critiques qui empêchaient TypeScript de reconnaître les importations de fichiers SVG et PNG. C'était une étape indispensable pour que les icônes personnalisées fonctionnent.
+
+2.  **Installation des dépendances :**
+    *   **Action :** Exécution de la commande `npm install`.
+    *   **Utilité :** Étape fondamentale pour installer toutes les bibliothèques nécessaires au projet. Sans cela, le projet ne peut ni démarrer ni être vérifié.
+
+3.  **Correction des erreurs de "Linting" :**
+    *   **Modification :** Correction de 3 erreurs de code dans les fichiers `tailwind.config.ts`, `command.tsx` et `textarea.tsx`. Les corrections ont consisté à moderniser la syntaxe d'importation et à supprimer du code redondant (interfaces vides).
+    *   **Utilité :** Assurer que le code respecte les standards de qualité, est plus facile à maintenir et ne contient pas d'erreurs potentielles.

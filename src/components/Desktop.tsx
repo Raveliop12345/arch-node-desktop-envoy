@@ -5,18 +5,20 @@ import { FileManager } from './FileManager';
 import { Terminal } from './Terminal';
 import { SystemMonitor } from './SystemMonitor';
 import { ProcessManager } from './ProcessManager';
+import { Store } from './Store';
 import { NotificationCenter } from './NotificationCenter';
 import { DesktopIcon } from './DesktopIcon';
 import { 
-  Folder, 
-  Terminal as TerminalIcon, 
-  Activity, 
-  Settings, 
   FileText,
   Image,
   Music,
   Video
 } from 'lucide-react';
+import FilesIcon from '../free icon/Files.svg?react';
+import SettingsIcon from '../free icon/Settings.png';
+import SystemMonitorIcon from '../free icon/System Monitor.svg?react';
+import TerminalIcon from '../free icon/Terminal.png';
+import StoreIcon from '../free icon/store.png';
 
 export const Desktop = () => {
   const [openWindows, setOpenWindows] = useState<string[]>([]);
@@ -43,10 +45,14 @@ export const Desktop = () => {
   };
 
   const desktopIcons = [
-    { id: 'files', label: 'Files', icon: Folder, action: () => openWindow('filemanager') },
+    { id: 'files', label: 'Files', icon: FilesIcon, action: () => openWindow('filemanager') },
+    { id: 'store', label: 'Store', icon: StoreIcon, action: () => openWindow('store') },
     { id: 'terminal', label: 'Terminal', icon: TerminalIcon, action: () => openWindow('terminal') },
-    { id: 'monitor', label: 'System Monitor', icon: Activity, action: () => openWindow('monitor') },
-    { id: 'settings', label: 'Settings', icon: Settings, action: () => openWindow('settings') },
+    { id: 'monitor', label: 'System Monitor', icon: SystemMonitorIcon, action: () => openWindow('monitor') },
+    { id: 'settings', label: 'Settings', icon: SettingsIcon, action: () => openWindow('settings') },
+  ];
+
+  const applications = [
     { id: 'documents', label: 'Documents', icon: FileText, action: () => {} },
     { id: 'pictures', label: 'Pictures', icon: Image, action: () => {} },
     { id: 'music', label: 'Music', icon: Music, action: () => {} },
@@ -118,6 +124,14 @@ export const Desktop = () => {
           isActive={activeWindow === 'processes'}
           onClose={() => closeWindow('processes')}
           onFocus={() => setActiveWindow('processes')}
+        />
+      )}
+
+      {openWindows.includes('store') && (
+        <Store
+          isActive={activeWindow === 'store'}
+          onClose={() => closeWindow('store')}
+          onFocus={() => setActiveWindow('store')}
         />
       )}
 

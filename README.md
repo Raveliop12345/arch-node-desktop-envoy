@@ -1,4 +1,17 @@
-# Welcome to your Lovable project
+# Arch Node Desktop Envoy
+
+`arch-node-desktop-envoy` est un simulateur d'environnement de bureau web, construit avec React, Vite et TailwindCSS. Il offre une interface de bureau familière directement dans votre navigateur, avec des fonctionnalités telles que :
+
+- Un bureau dynamique avec des icônes personnalisables.
+- Un système de gestion de fenêtres pour ouvrir, fermer et gérer les fenêtres d'application.
+- Une barre des tâches fonctionnelle pour un accès rapide aux applications ouvertes.
+- Plusieurs applications intégrées, dont un gestionnaire de fichiers, un terminal et un moniteur système.
+- Une interface utilisateur moderne et épurée, stylisée avec shadcn/ui.
+
+Ce projet sert de démonstration pour la création d'interfaces utilisateur complexes et interactives avec les technologies web modernes.
+
+---
+
 
 ## Project info
 
